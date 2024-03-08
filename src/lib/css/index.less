@@ -11,7 +11,7 @@
 @stepPadding: 10px;
 @groupMargin: 10px 25px;
 
-@groupWidth: 200px;
+@groupWidth: 180px;
 @groupHeight: 42px;
 @stepHeight: 32px;
 
@@ -84,29 +84,14 @@
   box-sizing: border-box;
 }
 
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+}
+
 .pipeline-stage {
-  background: @background;
-  padding: 10px 20px;
-  overflow: auto;
-  font-size: 14px;
-
-  /* 开始节点, 结束节点 */
-  .pipeline-stage-start,
-  .pipeline-stage-end {
-    width: 100px;
-    height: @groupHeight;
-    background: @stepBackground;
-    border-radius: @borderRadius;
-    box-shadow: @stepBoxShadow;
-
-    .svg-icon {
-      width: 16px;
-      height: 16px;
-      color: @parallelTaskBackground;
-      margin-right: 10px;
-    }
-  }
-
   /* 删除按钮 */
   .pipeline-delete {
     position: absolute;
@@ -166,33 +151,8 @@
     }
   }
 
-  /* step */
-  .pipeline-step-wrapper {
-    width: @groupWidth;
-
-    .pipeline-step-box {
-      position: relative;
-      background: @stepBackground;
-      border: 1px solid @stepBorderColor;
-      height: @stepHeight;
-      padding: 0 @stepPadding;
-      border-radius: @borderRadius;
-
-      .pipeline-step-label {
-        color: @stepColor;
-      }
-    }
-  }
-
   /* group title */
   .pipeline-stage-group-title {
-    background: @stepBackground;
-    width: @groupWidth;
-    height: @groupHeight;
-    border-radius: @borderRadius;
-    position: relative;
-    box-shadow: @stepBoxShadow;
-
     .title-index {
       min-width: 40px;
       height: 100%;
@@ -215,31 +175,9 @@
     }
   }
 
-  /* 分组中各 step 间的线条 */
-  .pipeline-step-line {
-    margin-left: 50%;
-    height: 14px;
-    border-left: 1px dotted @stepLineColor;
-    margin-top: 3px;
-  }
-
   /* 点和开始线 */
   .pipeline-stage-dot-box {
-    position: relative;
-    padding: @groupMargin;
-
     &.pipeline-stage-dot-start {
-      &::after {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 25px;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid @parallelTaskBackground;
-        content: '';
-      }
-
       .pipeline-stage-start {
         &::after {
           position: absolute;
@@ -247,32 +185,6 @@
           width: 0;
           height: 0;
           right: 22px;
-          border: 2px solid @parallelTaskBackground;
-          border-radius: 50%;
-          content: '';
-        }
-      }
-    }
-
-    &.pipeline-stage-dot-end {
-      &::after {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 25px;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid @parallelTaskBackground;
-        content: '';
-      }
-
-      .pipeline-stage-end {
-        &::after {
-          position: absolute;
-          top: calc(50% - 2px);
-          width: 0;
-          height: 0;
-          left: 22px;
           border: 2px solid @parallelTaskBackground;
           border-radius: 50%;
           content: '';
@@ -292,6 +204,54 @@
   }
 
   .group-box {
+    &::after {
+      position: absolute;
+      top: calc(10px + @groupHeight / 2 - 2px);
+      width: 0;
+      height: 0;
+      right: 22px;
+      border: 2px solid @parallelTaskBackground;
+      border-radius: 50%;
+      content: '';
+    }
+
+    .group-list {
+      .group-wrapper-box:last-child {
+        &::before {
+          bottom: 9px !important;
+        }
+      }
+    }
+  }
+}
+
+.pipeline-stage,
+.pipeline-stage-view {
+  background: @background;
+  padding: 10px 20px;
+  overflow: auto;
+  font-size: 14px;
+
+  /* 点和开始线 */
+  .pipeline-stage-dot-box {
+    position: relative;
+    padding: @groupMargin;
+
+    &.pipeline-stage-dot-start {
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 25px;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid @parallelTaskBackground;
+        content: '';
+      }
+    }
+  }
+
+  .group-box {
     position: relative;
 
     &::before {
@@ -305,61 +265,7 @@
       content: '';
     }
 
-    &::after {
-      position: absolute;
-      top: calc(10px + @groupHeight / 2 - 2px);
-      width: 0;
-      height: 0;
-      right: 22px;
-      border: 2px solid @parallelTaskBackground;
-      border-radius: 50%;
-      content: '';
-    }
-
-    .group-list {
-      .group-wrapper-box {
-        padding: @groupMargin;
-        position: relative;
-
-        &::before {
-          position: absolute;
-          top: 2px;
-          right: 0;
-          bottom: -2px;
-          left: 0;
-          border: 1px solid @parallelTaskBackground;
-          border-top: transparent;
-          border-radius: 0 0 12px 12px;
-          transform: translateY(30px);
-          content: '';
-        }
-      }
-
-      .group-wrapper-box:first-child {
-        .group-wrapper {
-          &::after {
-            position: absolute;
-            top: calc(@groupHeight / 2);
-            left: 100%;
-            width: 25px;
-            height: 1px;
-            border: 0;
-            border-top: 1px solid @parallelTaskBackground;
-            content: '';
-          }
-        }
-      }
-
-      .group-wrapper-box:last-child {
-        &::before {
-          bottom: 9px !important;
-        }
-      }
-    }
-
     .group-wrapper {
-      position: relative;
-
       &::before {
         position: absolute;
         top: calc(@groupHeight / 2 - 4px);
@@ -372,18 +278,216 @@
         content: '';
       }
     }
+
+    .group-wrapper-box:first-child {
+      .group-wrapper {
+        &::after {
+          position: absolute;
+          top: calc(@groupHeight / 2);
+          left: 100%;
+          width: 25px;
+          height: 1px;
+          border: 0;
+          border-top: 1px solid @parallelTaskBackground;
+          content: '';
+        }
+      }
+    }
   }
 
-  /* 分组列表 */
-  .pipeline-stage-group-list {
-    .group-box {
+  /* 开始节点, 结束节点 */
+  .pipeline-stage-start,
+  .pipeline-stage-end {
+    width: 100px;
+    height: @groupHeight;
+    background: @stepBackground;
+    border-radius: @borderRadius;
+    box-shadow: @stepBoxShadow;
+
+    .svg-icon {
+      width: 16px;
+      height: 16px;
+      color: @parallelTaskBackground;
+      margin-right: 10px;
+    }
+  }
+
+  /* 分组中各 step 间的线条 */
+  .pipeline-step-line {
+    margin-left: 50%;
+    height: 14px;
+    border-left: 1px dotted @stepLineColor;
+    margin-top: 3px;
+  }
+
+  /* group title */
+  .pipeline-stage-group-title {
+    background: @stepBackground;
+    width: @groupWidth;
+    height: @groupHeight;
+    border-radius: @borderRadius;
+    position: relative;
+    box-shadow: @stepBoxShadow;
+
+    .title-label-footer {
+      margin-top: 8px;
+    }
+  }
+
+  /* step */
+  .pipeline-step-wrapper {
+    position: relative;
+    width: @groupWidth;
+
+    .pipeline-step-box {
+      position: relative;
+      background: @stepBackground;
+      border: 1px solid @stepBorderColor;
+      height: @stepHeight;
+      padding: 0 @stepPadding;
+      border-radius: @borderRadius;
+
+      .pipeline-step-label {
+        color: @stepColor;
+      }
+    }
+  }
+
+  .pipeline-stage-dot-end {
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 25px;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid @parallelTaskBackground;
+      content: '';
+    }
+
+    .pipeline-stage-end {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: calc(50% - 4px);
+        left: -4px;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid @parallelTaskBackground;
+        content: '';
+      }
+    }
+  }
+
+  .group-list {
+    .group-wrapper-box {
+      padding: @groupMargin;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        bottom: -2px;
+        left: 0;
+        border: 1px solid @parallelTaskBackground;
+        border-top: transparent;
+        border-radius: 0 0 12px 12px;
+        transform: translateY(30px);
+        content: '';
+      }
+
       .group-wrapper {
+        position: relative;
         padding-bottom: 25px;
 
         .pipeline-stage-group {
           padding-bottom: 14px;
           position: relative;
         }
+      }
+    }
+  }
+}
+
+@successColor: #52c425;
+@processColor: #92cbf7;
+@failedColor: #f5222d;
+@lineColor: #909399;
+
+.pipeline-stage-view {
+  margin-top: 20px;
+
+  .pipeline-stage-group-add-step-wrapper {
+    display: none !important;
+  }
+
+  .pipeline-stage-dot-start,
+  .group-wrapper-box:first-child .group-wrapper,
+  .pipeline-stage-dot-end {
+    &::after {
+      border-top-color: @lineColor!important;
+    }
+  }
+
+  .group-box {
+    &::before {
+      border-top-color: @lineColor!important;
+    }
+  }
+
+  .group-wrapper {
+    &::before {
+      border-left-color: @lineColor !important;
+    }
+  }
+
+  .group-wrapper-box {
+    &::before {
+      border-color: @lineColor !important;
+    }
+  }
+
+  .group-wrapper-box:last-child {
+    &::before {
+      border: unset !important;
+    }
+  }
+
+  .pipeline-stage-end {
+    &::after {
+      border-left-color: @lineColor !important;
+    }
+  }
+
+  .pipeline-stage-group {
+    .pipeline-stage-group-title {
+      width: @groupWidth;
+      height: 62px;
+      padding: 8px 10px;
+      font-weight: 400 !important;
+      color: #42474c;
+      background-color: #ffffff;
+      border: 1px solid transparent;
+
+      .title-index {
+        display: none !important;
+      }
+
+      &.group-success {
+        border-color: @successColor;
+      }
+
+      &.group-process {
+        border-color: @processColor;
+      }
+
+      &.group-failed,
+      &.group-stop {
+        border-color: @failedColor;
       }
     }
   }

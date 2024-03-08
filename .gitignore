@@ -32,4 +32,4 @@ node_modules
 pnpm-lock.yaml
 index.css
 
-examples/**/*/pipeline
+examples/**/*/pipeline-draggable

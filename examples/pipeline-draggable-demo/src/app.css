@@ -3,6 +3,10 @@
   justify-content: flex-end;
 }
 
+.page-margin-top {
+  margin-top: 20px;
+}
+
 .ant-drawer .footer button:not(:last-child) {
   margin-right: 10px;
 }
@@ -26,4 +30,17 @@
   margin: 0 8px;
 }
 
+.pipeline-stage-view-wrapper .step-footer {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
 
+.pipeline-stage-view-wrapper .step-footer .step-footer-left {
+  color: #1677ff;
+  flex: 1;
+}
+
+.pipeline-stage-view-wrapper .step-footer .step-footer-right {
+  color: #8a8a8a;
+}
