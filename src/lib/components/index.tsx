@@ -3,13 +3,60 @@
  * @date 2023-08-28
  * @author poohlaha
  */
-import React, { ReactElement } from 'react'
-import { IPipelineGroupProps, IPipelineProps } from './props'
+import React, { Fragment, ReactElement, useState } from 'react'
+import {IPipelineGroupProps, IPipelineProps, IPipelineStepProps} from './props'
 import Utils from '../utils'
 import Group from './group'
 import '../css/index.css'
+// import Sortable from 'sortablejs'
 
 const Pipeline = (props: IPipelineProps): ReactElement => {
+  const [groupDraggable, setGroupDraggable] = useState(false)
+
+  /*
+  useMount(() => {
+    let groupDomList = document.querySelectorAll('.group-draggable') || []
+    if (groupDomList.length === 0) return
+
+    for (let i = 0; i < groupDomList.length; i++) {
+      const groupDom = groupDomList[i] as HTMLElement
+      new Sortable(groupDom, {
+        group: 'nested',
+        animation: 150,
+        fallbackOnBody: false,
+        swapThreshold: 1,
+        onStart: () => {
+          setGroupDraggable(true)
+        },
+        onEnd: (evt: any = {}) => {
+          setGroupDraggable(false)
+          let itemEl = evt.item
+          console.log(itemEl)
+          console.log(evt.to)
+          console.log(evt.from)
+          console.log(evt.oldIndex)
+          console.log(evt.newIndex)
+          console.log(evt.oldDraggableIndex)
+          console.log(evt.newDraggableIndex)
+        },
+      })
+    }
+  })
+   */
+
+  /**
+   * 添加 step 按钮
+   */
+  const getAddStepHtml = (groupIndex: number = -1, groupChildIndex: number = -1) => {
+    return (
+      <div className="pipeline-stage-group-add-step-wrapper flex-center">
+        <div className="pipeline-stage-group-add-step cursor-pointer" onClick={() => props.onStepAdd?.(groupIndex, groupChildIndex)}>
+          <span className="pipeline-state-add-button">+</span>
+        </div>
+      </div>
+    )
+  }
+
   /**
    * 获取 Group 节点
    */
@@ -25,39 +72,52 @@ const Pipeline = (props: IPipelineProps): ReactElement => {
           if (group.length === 0) return null
 
           return (
-              <>
-                <div className="group-box" key={i}>
-                  <div className="group-list">
-                    {
-                      group.map((g: IPipelineGroupProps, j: number) => {
-                        const title = g.title || {}
-                        let index = title.index || ''
-                        if (Utils.isBlank(index)) {
-                          index = `${i + 1}-1`
-                        }
-                        return (
-                            <div className="group-wrapper-box" key={j}>
-                              <div className="group-wrapper">
-                                <Group
-                                    title={{
-                                      label: title.label || '',
-                                      index,
-                                    }}
-                                    steps={g.steps || []}
-                                />
-                              </div>
-                            </div>
-                        )
-                      })
+            <Fragment key={i}>
+              <div className={`group-box ${groupDraggable ? 'is-draggable' : ''}`}>
+                <div className="group-list">
+                  {group.map((g: IPipelineGroupProps, j: number) => {
+                    const title = g.title || {}
+                    let index = title.index || ''
+                    if (Utils.isBlank(index)) {
+                      index = `${i + 1}-${j + 1}`
                     }
-                  </div>
+                    return (
+                      <div className="group-wrapper-box" key={j}>
+                        <div className="group-wrapper">
+                          <div className="group-draggable">
+                            <Group
+                              title={{
+                                label: title.label || '',
+                                index,
+                              }}
+                              steps={g.steps || []}
+                              onStepClick={(step: IPipelineStepProps) => props.onStepClick?.(step)}
+                              onStepDelete={(stepIndex: number, step: IPipelineStepProps) => props.onStepDelete?.(i, j, stepIndex, step)}
+                              onGroupDelete={() => props.onGroupDelete?.(i, j, g)}
+                            />
+                          </div>
 
-                  {allowParallelTask && <div className="pipeline-stage-allow-paralle flex-center">增加并行阶段</div>}
+                          {/* 添加 step 按钮 */}
+                          {getAddStepHtml(i, j)}
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
 
-                {/* 添加分组按钮 */}
-                {getAddStageHtml()}
-              </>
+                {allowParallelTask && (
+                    <div
+                        className="pipeline-stage-allow-paralle flex-center cursor-pointer"
+                        onClick={() => props.onParallelTaskAdd?.(i, `pipeline-stage-${i + 1}-${group.length + 1}`)}
+                    >
+                      增加并行阶段
+                    </div>
+                )}
+              </div>
+
+              {/* 添加分组按钮 */}
+              {getAddStageHtml(i + 1)}
+            </Fragment>
           )
         })}
       </div>
@@ -93,9 +153,9 @@ const Pipeline = (props: IPipelineProps): ReactElement => {
   /**
    * 添加分组按钮
    */
-  const getAddStageHtml = () => {
+  const getAddStageHtml = (index: number = 0) => {
     return (
-      <div className="pipeline-state-add-group-wrapper">
+      <div className="pipeline-state-add-group-wrapper" onClick={() => props.onGroupAdd?.(index)}>
         <div className="pipeline-state-add-group cursor-pointer">
           <span className="pipeline-state-add-button">+</span>
         </div>
@@ -110,7 +170,7 @@ const Pipeline = (props: IPipelineProps): ReactElement => {
         <div className="pipeline-stage-dot-box pipeline-stage-dot-start">{getStartHtml()}</div>
 
         {/* 添加分组按钮 */}
-        {getAddStageHtml()}
+        {getAddStageHtml(0)}
 
         {/* 中间 Group 列表*/}
         {getGroupHtml()}

@@ -5,16 +5,16 @@
  */
 import React, { ReactElement } from 'react'
 import Utils from '../../utils'
-import { IPipelineStepProps } from '../props'
+import {IPipelineStep} from '../props'
 
-const PipelineStep = (props: IPipelineStepProps): ReactElement => {
+const PipelineStep = (props: IPipelineStep): ReactElement => {
   const render = () => {
     return (
       <div className="pipeline-step-wrapper cursor-pointer">
-        <div className="pipeline-step-box flex-align-center">
+        <div className="pipeline-step-box flex-center" onClick={() => props.onStepClick?.()}>
           <div className="pipeline-step-label over-ellipsis">{props.label || ''}</div>
-          {Utils.getDeleteSvg()}
         </div>
+          {Utils.getDeleteSvg(props.onDelete)}
       </div>
     )
   }

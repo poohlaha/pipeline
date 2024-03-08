@@ -31,9 +31,9 @@ const Utils = {
   /**
    * 获取删除的 svg
    */
-  getDeleteSvg: () => {
+  getDeleteSvg: (onDelete?: Function) => {
     return (
-      <div className="pipeline-delete">
+      <div className="pipeline-delete" onClick={() => onDelete?.()}>
         <svg className="svg-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <path d="M512 883.2A371.2 371.2 0 1 0 140.8 512 371.2 371.2 0 0 0 512 883.2z m0 64a435.2 435.2 0 1 1 435.2-435.2 435.2 435.2 0 0 1-435.2 435.2z" fill="currentColor"></path>
           <path

@@ -85,7 +85,6 @@
 }
 
 .pipeline-stage {
-
   background: @background;
   padding: 10px 20px;
   overflow: auto;
@@ -120,19 +119,27 @@
     display: none;
   }
 
+  .group-draggable.is-draggable {
+    .pipeline-delete {
+      display: none !important;
+    }
+  }
+
   /* 添加分组按钮 */
   .pipeline-state-add-group-wrapper {
     margin: calc(10px + 20px - 9px) 0;
   }
 
   .pipeline-stage-group-add-step-wrapper {
-      position: absolute;
-      width: 100%;
-      bottom: 5px;
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
   }
 
-  .pipeline-stage-group-add-step-wrapper, .pipeline-state-add-group-wrapper {
-    .pipeline-state-add-group, .pipeline-stage-group-add-step {
+  .pipeline-stage-group-add-step-wrapper,
+  .pipeline-state-add-group-wrapper {
+    .pipeline-state-add-group,
+    .pipeline-stage-group-add-step {
       width: 18px;
       height: 18px;
       background: @stepBackground;
@@ -198,8 +205,9 @@
     }
   }
 
-  .pipeline-step-wrapper,
-  .pipeline-stage-group-title {
+  .pipeline-stage-group-title,
+  .pipeline-step-wrapper {
+    position: relative;
     &:hover {
       .pipeline-delete {
         display: block;
@@ -247,7 +255,6 @@
     }
 
     &.pipeline-stage-dot-end {
-
       &::after {
         position: absolute;
         top: 50%;
@@ -295,7 +302,7 @@
       height: 1px;
       border: 0;
       border-top: 1px solid @parallelTaskBackground;
-      content: "";
+      content: '';
     }
 
     &::after {
@@ -324,7 +331,7 @@
           border-top: transparent;
           border-radius: 0 0 12px 12px;
           transform: translateY(30px);
-          content: "";
+          content: '';
         }
       }
 
@@ -344,9 +351,8 @@
       }
 
       .group-wrapper-box:last-child {
-
         &::before {
-          bottom: 9px!important;
+          bottom: 9px !important;
         }
       }
     }
@@ -363,7 +369,7 @@
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         border-left: 5px solid @parallelTaskBackground;
-        content: "";
+        content: '';
       }
     }
   }
@@ -371,7 +377,6 @@
   /* 分组列表 */
   .pipeline-stage-group-list {
     .group-box {
-
       .group-wrapper {
         padding-bottom: 25px;
 

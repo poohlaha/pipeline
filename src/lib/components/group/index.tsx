@@ -4,11 +4,12 @@
  * @author poohlaha
  */
 import React, { ReactElement } from 'react'
-import { IPipelineGroupProps, IPipelineStepProps } from '../props'
+import {IPipelineGroup, IPipelineStepProps} from '../props'
 import Step from '../step'
 import Utils from '../../utils'
 
-const PipelineGroup = (props: IPipelineGroupProps): ReactElement => {
+const PipelineGroup = (props: IPipelineGroup): ReactElement => {
+
   /**
    * 获取标题
    */
@@ -17,7 +18,7 @@ const PipelineGroup = (props: IPipelineGroupProps): ReactElement => {
       <div className="pipeline-stage-group-title flex font-bold cursor-pointer">
         <div className="title-index flex-center">{props.title.index || ''}</div>
         <div className="title-label flex-1 flex-align-center over-ellipsis">{props.title.label || ''}</div>
-        {Utils.getDeleteSvg()}
+        {Utils.getDeleteSvg(props.onGroupDelete)}
       </div>
     )
   }
@@ -33,24 +34,15 @@ const PipelineGroup = (props: IPipelineGroupProps): ReactElement => {
           return (
             <div className="pipeline-step-item" key={index}>
               <div className="pipeline-step-line" />
-              <Step label={step.label || ''}></Step>
+              <Step
+                  label={step.label || ''}
+                  onStepClick={() => props.onStepClick?.(step)}
+                  onDelete={() => props.onStepDelete?.(index, step)}
+              />
             </div>
           )
         })}
       </div>
-    )
-  }
-
-  /**
-   * 添加 step 按钮
-   */
-  const getAddStepHtml = () => {
-    return (
-        <div className="pipeline-stage-group-add-step-wrapper flex-center">
-          <div className="pipeline-stage-group-add-step cursor-pointer">
-            <span className="pipeline-state-add-button">+</span>
-          </div>
-        </div>
     )
   }
 
@@ -62,9 +54,6 @@ const PipelineGroup = (props: IPipelineGroupProps): ReactElement => {
 
         {/* step 列表*/}
         {getStepListHtml()}
-
-        {/* 添加 step 按钮 */}
-        {getAddStepHtml()}
       </div>
     )
   }

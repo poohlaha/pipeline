@@ -1,0 +1,29 @@
+.ant-drawer .footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ant-drawer .footer button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.ant-drawer .setting-body .body-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-drawer .setting-body .item-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-modal-root .modal-delete {
+  display: block;
+}
+
+.ant-modal-root .modal-delete .name {
+  color: #fa8c16;
+  margin: 0 8px;
+}
+
+
