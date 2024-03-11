@@ -36,5 +36,19 @@
     "@swc/helpers": "^0.4.14",
     "ava": "^5.2.0",
     "sortablejs": "^1.15.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{vue,jsx,js,tsx,ts,json,css,md}": [
+      "prettier --write"
+    ],
+    "**/*.{vue,jsx,js,tsx,ts}": [
+      "eslint --fix"
+    ]
   }
 }
