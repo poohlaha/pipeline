@@ -7,7 +7,7 @@ import React, { Fragment, ReactElement, useState } from 'react'
 import { IPipelineGroupProps, IPipelineProps, IPipelineStepProps } from './props'
 import Utils from '../utils'
 import Group from './group'
-import '../css/index.css'
+import '../css/index.less'
 // import Sortable from 'sortablejs'
 
 const Pipeline = (props: IPipelineProps): ReactElement => {

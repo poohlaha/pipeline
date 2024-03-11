@@ -7,7 +7,7 @@ import React, { Fragment, ReactElement, useState } from 'react'
 import { IPipelineGroupProps, IPipelineStepProps, IPipelineViewProps } from './props'
 import Utils from '../utils'
 import Group from './group'
-import '../css/index.css'
+import '../css/index.less'
 
 const PipelineView = (props: IPipelineViewProps): ReactElement => {
   const [groupDraggable, setGroupDraggable] = useState(false)
