@@ -4,10 +4,10 @@
  * @author poohlaha
  */
 
-import Pipeline from './lib/components'
-import PipelineView from './lib/components/view'
-import { IPipelineStepProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps, IPipelineViewProps, IPipelineViewGroupProps } from './lib/components/props'
+import Pipeline from './components'
+import PipelineView from './components/view'
+import { IPipelineStepProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps, IPipelineViewProps, IPipelineViewGroupProps, IPipelineStatus } from './components/props'
 
 export { Pipeline, PipelineView }
 
-export type { IPipelineStepProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps, IPipelineViewProps, IPipelineViewGroupProps }
+export type { IPipelineStepProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps, IPipelineViewProps, IPipelineViewGroupProps, IPipelineStatus }

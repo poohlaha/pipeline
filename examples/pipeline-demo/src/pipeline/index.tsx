@@ -1,6 +1,6 @@
 import React, { useState, ReactElement } from 'react'
-import type { IPipelineStepProps, IPipelineGroupProps, IPipelineProps } from '../pipeline-draggable'
-import { Pipeline } from '../pipeline-draggable'
+import type { IPipelineStepProps, IPipelineGroupProps, IPipelineProps } from 'pipeline'
+import { Pipeline } from 'pipeline'
 import { Button, Drawer, Input, Modal } from 'antd'
 
 const { confirm } = Modal

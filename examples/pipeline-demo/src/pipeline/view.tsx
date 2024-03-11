@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react'
-import type { IPipelineViewProps } from '../pipeline-draggable'
-import { PipelineView } from '../pipeline-draggable'
+import type { IPipelineViewProps } from 'pipeline'
+import { PipelineView } from 'pipeline'
 
 interface IPipelineStageViewProps {
   data: IPipelineViewProps

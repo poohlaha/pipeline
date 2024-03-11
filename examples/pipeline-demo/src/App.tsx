@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import PipelineStage from './pipeline'
 import PipelineStageView from './pipeline/view'
 import './app.css'
-import { IPipelineProps, IPipelineViewGroupProps, IPipelineViewProps } from './pipeline-draggable'
-import { IPipelineStatus } from './pipeline-draggable/lib/components/props'
+import type { IPipelineProps, IPipelineViewGroupProps, IPipelineViewProps, IPipelineStatus } from 'pipeline'
 
 function App() {
   const defaultData: IPipelineProps = {

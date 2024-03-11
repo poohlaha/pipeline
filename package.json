@@ -1,10 +1,10 @@
 {
-  "name": "pipeline-draggable",
+  "name": "pipeline",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "node scripts/build.js",
-    "push": "node scripts/publish.js",
+    "build": "swc src -d src",
     "format": "npx prettier --write .",
     "test": "ava"
   },
@@ -34,6 +34,7 @@
     "@swc/cli": "^0.1.62",
     "@swc/core": "^1.3.38",
     "@swc/helpers": "^0.4.14",
-    "ava": "^5.2.0"
+    "ava": "^5.2.0",
+    "sortablejs": "^1.15.2"
   }
 }
