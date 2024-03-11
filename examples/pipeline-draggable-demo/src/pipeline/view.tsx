@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from 'react'
 import type { IPipelineViewProps } from '../pipeline-draggable'
-import {PipelineView} from '../pipeline-draggable'
+import { PipelineView } from '../pipeline-draggable'
 
 interface IPipelineStageViewProps {
-  data: IPipelineViewProps,
+  data: IPipelineViewProps
 }
 
 const PipelineStageView = (props: IPipelineStageViewProps): ReactElement => {
@@ -17,7 +17,7 @@ const PipelineStageView = (props: IPipelineStageViewProps): ReactElement => {
   }
 
   const getData = () => {
-    let data = {...props.data}
+    let data = { ...props.data }
     let groups = data.groups || []
     let newGroups = groups.map(group => {
       return group.map(g => {

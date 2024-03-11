@@ -3,13 +3,12 @@
  * @date 2024-03-07
  * @author poohlaha
  */
-import React, {ReactElement} from 'react'
-import {IPipelineGroup, IPipelineStatus, IPipelineStepProps} from '../props'
+import React, { ReactElement } from 'react'
+import { IPipelineGroup, IPipelineStatus, IPipelineStepProps } from '../props'
 import Step from '../step'
 import Utils from '../../utils'
 
 const PipelineGroup = (props: IPipelineGroup): ReactElement => {
-
   /**
    * 获取状态样式
    */

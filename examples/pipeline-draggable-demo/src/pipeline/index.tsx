@@ -6,7 +6,7 @@ import { Button, Drawer, Input, Modal } from 'antd'
 const { confirm } = Modal
 
 interface IPipelineStageProps {
-  data: IPipelineProps,
+  data: IPipelineProps
   onSetData: (data: IPipelineProps) => void
 }
 const PipelineStage = (props: IPipelineStageProps): ReactElement => {
