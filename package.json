@@ -1,7 +1,21 @@
 {
-  "name": "pipeline",
+  "name": "@bale-components/pipeline",
   "version": "1.0.0",
-  "private": true,
+  "author": "poohlaha",
+  "description": "pipeline stage and view",
+  "keywords": [
+    "pipeline",
+    "stage",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poohlaha/pipeline.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "swc src -d src",
@@ -9,18 +23,13 @@
     "test": "ava"
   },
   "dependencies": {
+  },
+  "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/eslint-parser": "^7.12.16",
     "@babel/preset-env": "^7.14.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^4.3.2",
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5"
-  },
-  "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
@@ -34,8 +43,7 @@
     "@swc/cli": "^0.1.62",
     "@swc/core": "^1.3.38",
     "@swc/helpers": "^0.4.14",
-    "ava": "^5.2.0",
-    "sortablejs": "^1.15.2"
+    "ava": "^5.2.0"
   },
   "husky": {
     "hooks": {

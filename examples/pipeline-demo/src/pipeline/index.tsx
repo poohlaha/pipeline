@@ -1,6 +1,6 @@
 import React, { useState, ReactElement } from 'react'
-import type { IPipelineStepProps, IPipelineGroupProps, IPipelineProps } from 'pipeline'
-import { Pipeline } from 'pipeline'
+import type { IPipelineStepProps, IPipelineGroupProps, IPipelineProps } from '@bale-components/pipeline/src'
+import { Pipeline } from '@bale-components/pipeline/src'
 import { Button, Drawer, Input, Modal } from 'antd'
 
 const { confirm } = Modal

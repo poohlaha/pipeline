@@ -3,7 +3,15 @@
 .gitignore
 yarn.lock
 package-lock.json
+pnpm-lock.json
+screenshots
 node_modules
 yarn-error.log
 examples
-
+.commitlintrc.js
+.editorconfig
+.eslintignore
+.eslintrc.js
+.prettierignore
+.prettierrc.js
+tsconfig.json

@@ -5,8 +5,8 @@
  */
 
 import Pipeline from './lib/components'
-import { IPipelineStepProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps } from './lib/components/props'
+import PipelineView from './lib/components/view'
+import { IPipelineStepProps, IPipelineViewGroupProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps, IPipelineViewProps, IPipelineStatus  } from './lib/components/props'
 
-export { Pipeline }
-
-export type { IPipelineStepProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps }
+export { Pipeline, PipelineView, IPipelineStatus }
+export type { IPipelineStepProps, IPipelineGroupTitleProps, IPipelineGroupProps, IPipelineProps, IPipelineViewProps, IPipelineViewGroupProps }
