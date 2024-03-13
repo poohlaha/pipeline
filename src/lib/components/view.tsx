@@ -4,7 +4,7 @@
  * @author poohlaha
  */
 import React, { Fragment, ReactElement, useState } from 'react'
-import { IPipelineGroupProps, IPipelineStepProps, IPipelineViewProps } from './props'
+import { IPipelineViewProps } from './props'
 import Utils from '../utils'
 import Group from './group'
 import '../css/index.less'
@@ -102,7 +102,7 @@ const PipelineView = (props: IPipelineViewProps): ReactElement => {
 
   const render = () => {
     return (
-      <div className="pipeline-stage-view flex-align-start">
+      <div className={`pipeline-stage-view flex-align-start ${props.className}`}>
         {/* 开始节点 */}
         <div className="pipeline-stage-dot-box pipeline-stage-dot-start">{getStartHtml()}</div>
 

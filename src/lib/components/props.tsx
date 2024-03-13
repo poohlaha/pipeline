@@ -25,6 +25,7 @@ export interface IPipelineGroupProps {
 }
 
 export interface IPipelineProps {
+  className?: string
   groups: Array<Array<IPipelineGroupProps>>
   allowParallelTask?: boolean // 是否允许并行任务, 默认为 true
   startText?: string // 开始节点文本, 默认为 '开始'
@@ -62,6 +63,7 @@ export interface IPipelineGroup {
 
 // stage
 export interface IPipelineViewProps {
+  className?: string
   groups: Array<Array<IPipelineViewGroupProps>>
   step?: Array<number> // 当前运行到哪一步
   startText?: string // 开始节点文本, 默认为 '开始'

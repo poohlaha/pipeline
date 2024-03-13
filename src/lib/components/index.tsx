@@ -163,7 +163,7 @@ const Pipeline = (props: IPipelineProps): ReactElement => {
 
   const render = () => {
     return (
-      <div className="pipeline-stage flex-align-start">
+      <div className={`pipeline-stage flex-align-start ${props.className || ''}`}>
         {/* 开始节点 */}
         <div className="pipeline-stage-dot-box pipeline-stage-dot-start">{getStartHtml()}</div>
 
