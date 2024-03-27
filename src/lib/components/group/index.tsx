@@ -47,7 +47,7 @@ const PipelineGroup = (props: IPipelineGroup): ReactElement => {
     let statusClass = getStatusClass()
     return (
       <div className={`pipeline-stage-group-title flex font-bold cursor-pointer ${statusClass || ''}`}>
-        <div className="pipeline-stage-group-title-content flex-align-center" onClick={() => props.onGroupClick?.()}>
+        <div className="pipeline-stage-group-title-content flex-1 flex-align-center" onClick={() => props.onGroupClick?.()}>
           <div className="title-index flex-center">{props.title.index || ''}</div>
           <div className="title-label flex-1 flex-align-center over-ellipsis">
             <p>{props.title.label || ''}</p>
