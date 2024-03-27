@@ -15,3 +15,4 @@ examples
 .prettierignore
 .prettierrc.js
 tsconfig.json
+.swcrc

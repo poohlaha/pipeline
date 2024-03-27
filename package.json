@@ -20,6 +20,7 @@
     "preinstall": "npx only-allow pnpm",
     "build": "swc src -d src",
     "format": "npx prettier --write .",
+    "publish": "npm publish",
     "test": "ava"
   },
   "dependencies": {},
