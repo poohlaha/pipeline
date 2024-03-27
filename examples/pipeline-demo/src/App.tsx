@@ -3,7 +3,7 @@ import PipelineStage from './pipeline'
 import PipelineStageView from './pipeline/view'
 import './app.css'
 import type { IPipelineProps, IPipelineViewGroupProps, IPipelineViewProps } from '@bale-components/pipeline/src'
-import {IPipelineStatus} from '@bale-components/pipeline/src'
+import { IPipelineStatus } from '@bale-components/pipeline/src'
 
 function App() {
   const defaultData: IPipelineProps = {

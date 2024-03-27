@@ -2,7 +2,6 @@ import React, { ReactElement, useState } from 'react'
 import type { IPipelineViewProps, IPipelineViewGroupProps } from '@bale-components/pipeline/src/index'
 import { PipelineView } from '@bale-components/pipeline/src/index'
 
-
 interface IPipelineStageViewProps {
   data: IPipelineViewProps
 }
